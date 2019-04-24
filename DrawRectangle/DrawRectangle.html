@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DrawRectangle</title>
+</head>
+<script>
+    function main() {
+        const cavans = document.querySelector('#myCavans');
+        if (!cavans) {
+            console.error('Failed to retrieve the <cavans> element');
+            return;
+        }
+        // 获取上下文,这里获取2d的就可以了.
+        const context = cavans.getContext('2d');
+        console.debug(context);
+
+        context.fillStyle = 'rgba(0,0,255,1.0)';
+        context.fillRect(120, 10, 150, 150);
+    }
+</script>
+
+<body onload="main()">
+    <canvas id='myCavans' width="800px" height="600px"></canvas>
+</body>
+
+</html>
