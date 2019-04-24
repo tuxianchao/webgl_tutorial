@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>draw point</title>
+    <script src='../lib/cuon-matrix.js'></script>
+    <script src='../lib/cuon-utils.js'></script>
+    <script src='../lib/webgl-debug.js'></script>
+    <script src='../lib/webgl-utils.js'></script>
+</head>
+<script>
+    // veretx shader
+    const VSHADER_SOURCE =
+        'void main(){\n' +
+        'gl_Position = vec4(0.0,0.0,0.0,1.0);\n' +//设置坐标
+        'gl_PointSize = 10.0;\n' +//设置尺寸
+        '}\n';
+    //  fragment shader
+    const FSHADER_SOURCE =
+        'void main(){\n' +
+        'gl_FragColor =  vec4(1.0,0.0,0.0,1.0);\n' +
+        '}\n';
+
+    function main() {
+        // 获取cavans
+        const cavans = document.querySelector('#webgl');
+        // init webgl context
+        const gl = getWebGLContext(cavans, true);
+        if (!gl) {
+            console.error('failed to init webgl context');
+            return;
+        }
+
+        // compile shader && link program
+        if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+            console.error('failed to init compile shader');
+            return;
+        }
+
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        //  draw a point
+        gl.drawArrays(gl.POINTS, 0, 1);
+
+    }
+</script>
+
+<body onload="main()">
+
+    <canvas id='webgl' width='800px' height='600px'>
+        please use the browser support 'cavans'!
+    </canvas>
+</body>
+
+</html>
