@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/local/Cellar/node/11.2.0/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/mysql/bin:/Users/tuxianchao/dev_tool/maven/apache-maven-3.5.4/bin:/Users/tuxianchao/go/bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.2.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/tuxianchao/Documents/front/webgl/proj/webgl_tutorial/package.json: Unexpected string in JSON at position 249
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "webgl_tutorial",
+    "version": "1.0.0",
+    "description": "## DrawRectangle cavans 2d图形绘制",
+    "main": "index.js",
+    "directories": {
+      "lib": "lib"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+  	"start" "http-server -p 80"
+  
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/tuxianchao/webgl_tutorial.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/tuxianchao/webgl_tutorial/issues"
+    },
+    "homepage": "https://github.com/tuxianchao/webgl_tutorial#readme",
+    "devDependencies": {
+      "http-server": "^0.11.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
