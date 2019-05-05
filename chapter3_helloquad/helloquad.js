@@ -1,59 +1,57 @@
-
 window.onload = () => {
-    const VSHADER_SOURCE =
+
+    const VSHADER_RESOURCE =
         'attribute vec4 a_Position;\n' +
         'void main(){\n' +
         'gl_Position = a_Position;\n' +
-        'gl_PointSize = 10.0;\n' +
-        '}\n';
-
-    const FSHADER_SOURCE =
+        '}';
+    const FSHADER_RESOURCE =
         'void main(){\n' +
         'gl_FragColor = vec4(0.0,1.0,0.0,1.0);\n' +
-        '}\n';
+        '}';
     const canvas = document.querySelector('#glCanvas');
     const gl = getWebGLContext(canvas);
+
     if (gl < 0) {
-        console.error(`failed to init webgl context`);
+        console.error('failed init webgl context');
         return;
     }
 
-    if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
-        console.error('failed to compile shader source or link shder program');
+    if (!(initShaders(gl, VSHADER_RESOURCE, FSHADER_RESOURCE))) {
+        console.error('failed to compile shader source or  link shader program.');
         return;
     }
 
-    // 获取顶点缓冲对象
-    let n = initVertexBuffers(gl);
+    const n = initVertexBuffers(gl);
     if (n < 0) {
-        console.error('failed to set position of vertices');
+        console.error('faile to set position of vertices');
         return;
     }
+
     ///设置背景色
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-
-
-    // 一次性绘制了三个点,然后又用这个三个点绘制了一个三角形
-    //一次性画三个点,数据来源于传递给顶点缓冲对象
-    gl.drawArrays(gl.POINTS, 0, 3);
-    //  绘制三角形
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    // 绘制由两个三角形组成的矩形
+    // gl.drawArrays(gl.TRIANGLE_STRIP, 0, n);
+    // 修改为TRIANGLE_FAN,就可以改变绘制顺序,绘制出飘带的效果
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, n);
 }
-
 /**
  * 填充顶点缓冲对象
- * @param {webgl} gl 
+ * @param {*} gl 
  */
 function initVertexBuffers(gl) {
+
+    //修改为4个点
     const vertices = new Float32Array([
-        0.0, 0.5,
+        -0.5, 0.5,
         -0.5, -0.5,
+        0.5, 0.5,
         0.5, -0.5
     ]);
     //三个点
-    const pointCount = 3;
+    const pointCount = 4;
     const vertexBuffer = gl.createBuffer();
     if (!vertexBuffer) {
         console.error('failed to creat buffer object.');
@@ -72,4 +70,5 @@ function initVertexBuffers(gl) {
     gl.enableVertexAttribArray(a_Position);
 
     return pointCount;
+
 }
