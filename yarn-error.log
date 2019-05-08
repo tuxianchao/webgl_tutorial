@@ -1,11 +1,11 @@
 Arguments: 
-  /usr/local/Cellar/node/11.2.0/bin/node /usr/local/bin/yarn start
+  /usr/local/Cellar/node/11.2.0/bin/node /Users/tuxianchao/.yarn/bin/yarn.js start
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/mysql/bin:/Users/tuxianchao/dev_tool/maven/apache-maven-3.5.4/bin:/Users/tuxianchao/go/bin
+  /Users/tuxianchao/.yarn/bin:/Users/tuxianchao/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/mysql/bin:/Users/tuxianchao/dev_tool/maven/apache-maven-3.5.4/bin:/Users/tuxianchao/go/bin
 
 Yarn version: 
-  1.13.0
+  1.15.2
 
 Node version: 
   11.2.0
@@ -14,25 +14,32 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/tuxianchao/Documents/front/webgl/proj/webgl_tutorial/package.json: Unexpected string in JSON at position 249
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'file' cannot be empty. Received ''
+      at normalizeSpawnArguments (child_process.js:402:11)
+      at Object.spawn (child_process.js:537:38)
+      at /Users/tuxianchao/.yarn/lib/cli.js:25740:24
+      at new Promise (<anonymous>)
+      at new F (/Users/tuxianchao/.yarn/lib/cli.js:5228:28)
+      at /Users/tuxianchao/.yarn/lib/cli.js:25739:12
+      at run (/Users/tuxianchao/.yarn/lib/cli.js:42764:7)
+      at BlockingQueue.maybePushConcurrencyQueue (/Users/tuxianchao/.yarn/lib/cli.js:42779:7)
+      at BlockingQueue.shift (/Users/tuxianchao/.yarn/lib/cli.js:42774:10)
+      at /Users/tuxianchao/.yarn/lib/cli.js:42718:15
 
 npm manifest: 
   {
     "name": "webgl_tutorial",
     "version": "1.0.0",
-    "description": "## DrawRectangle cavans 2d图形绘制",
+    "description": "webgl编程指南学习工程",
     "main": "index.js",
     "directories": {
       "lib": "lib"
     },
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-  	"start" "http-server -p 80"
+  	"prestart":"",
+  	"start":" http-server -p 80",
+      "poststart":"node script/openBrowser.js"
   
     },
     "repository": {

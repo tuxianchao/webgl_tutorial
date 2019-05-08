@@ -1,15 +1,15 @@
 {
   "name": "webgl_tutorial",
   "version": "1.0.0",
-  "description": "## DrawRectangle cavans 2d图形绘制",
+  "description": "webgl编程指南学习工程",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start":"http-server -p 80"
-
+	"prestart":"node script/openBrowser.js",
+	"start":" http-server -p 80"
   },
   "repository": {
     "type": "git",
