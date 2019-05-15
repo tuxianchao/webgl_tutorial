@@ -7,6 +7,7 @@ window.onload = () => {
     void main(){
         // 旋转矩阵
         gl_Position = u_xFormMatrix * a_Position;
+        // 旋转后平移
     }
     `;
 
@@ -35,10 +36,28 @@ window.onload = () => {
     const cosB = Math.cos(radian);
 
     // 旋转矩阵,注意webgl的是矩阵是列主序的
+    // const matrix = new Float32Array([
+    //     cosB, sinB, 0.0, 0.0,
+    //     -sinB, cosB, 0.0, 0.0,
+    //     0.0, 0.0, 1.0, 0.0,
+    //     0.0, 0.0, 0.0, 1.0,
+    // ]);
+
+    // 平移矩阵
+    // const Tx = 0.5, Ty = 0.5, Tz = 0.5;
+    // const matrix = new Float32Array([
+    //     1.0, 0.0, 0.0, 0.0,
+    //     0.0, 1.0, 0.0, 0.0,
+    //     0.0, 0.0, 1.0, 0.0,
+    //     Tx, Ty, Tz, 1.0,
+    // ]);
+
+    // 缩放矩阵
+    const Sx = 0.5, Sy = 1.0, Sz = 1.0;
     const matrix = new Float32Array([
-        cosB, sinB, 0.0, 0.0,
-        -sinB, cosB, 0.0, 0.0,
-        0.0, 0.0, 1.0, 0.0,
+        Sx, 0.0, 0.0, 0.0,
+        0.0, Sy, 0.0, 0.0,
+        0.0, 0.0, Sz, 0.0,
         0.0, 0.0, 0.0, 1.0,
     ]);
 
