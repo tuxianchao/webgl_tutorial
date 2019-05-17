@@ -37,7 +37,8 @@ window.onload = () => {
     const u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix');
     const that = this;
     // 60 fps
-    let loop = function () {
+    let loop = function (time) {
+        console.debug(time);
         currentAngle = animate(currentAngle);//计算当前应该旋转的角度
         draw(gl, n, currentAngle, modelMatrix, u_ModelMatrix);
         window.requestAnimationFrame(loop);
