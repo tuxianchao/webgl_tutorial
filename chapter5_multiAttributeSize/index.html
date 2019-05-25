@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>chapter4_多个大小尺寸不同的顶点</title>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="./multiAttributeSize.js"></script>
+</head>
+
+<body>
+    <h2>使用attribute绘制不同尺寸的点</h2>
+    <p>
+        本例中使用两个attribute变量,一个传递顶点信息,一个传递顶点的大小的信息.
+
+        机制类似,传递给顶点shader的attribute变量是一个数组,我们传递一个数组给顶点shader的attribute变量,然后告诉顶点shader的读取规则,
+
+        在shader中,在执行的时间,使用这些规则,来一次又一次的赋值给对应的attribute变量.
+    </p>
+    <hr>
+    <canvas id="glCanvas" width="800px" height="600px">
+        your browser doesn't support HTML5 canvas.
+    </canvas>
+</body>
+
+</html>
