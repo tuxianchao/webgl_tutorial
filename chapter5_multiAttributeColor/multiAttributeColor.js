@@ -46,7 +46,9 @@ window.onload = () => {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
 
-    gl.drawArrays(gl.POINTS, 0, n);
+    // gl.drawArrays(gl.POINTS, 0, n);
+    //做个试验,改成绘制三角形,就会绘制出彩色的三角形
+    gl.drawArrays(gl.TRIANGLES, 0, n);
 }
 
 
