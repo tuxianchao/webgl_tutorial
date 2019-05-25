@@ -6,13 +6,15 @@ window.onload = () => {
     }
     `;
     const FSHADER_SOURCE = `
+    precision mediump float;
+    uniform float u_Width;
+    uniform float u_Height;
     void main(){
         // 内置变量gl_FragCoord表示当前处理片元在canvas坐标系中的坐标值
         // 为了验证这个,可以做一个渐变的例子
         // gl_FragColor = vec4(1.0,0.0,0.0,1.0);
-        uniform float u_Width;
-        uniform float u_Height;
-        gl_FragColor = vec4(gl_FragCoord.x, 0.0, gl_FragCoord.y, 1.0);
+       
+        gl_FragColor = vec4(gl_FragCoord.x/u_Width, 0.0, gl_FragCoord.y/u_Height, 1.0);
     }
     `;
     const canvas = document.querySelector('#glCanvas');
@@ -29,6 +31,10 @@ window.onload = () => {
     }
 
     const n = initVertexBuffer(gl);
+    const u_Height = gl.getUniformLocation(gl.program, 'u_Height');
+    const u_Width = gl.getUniformLocation(gl.program, 'u_Width');
+    gl.uniform1f(u_Width, 800.0);
+    gl.uniform1f(u_Height, 600.0);
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
