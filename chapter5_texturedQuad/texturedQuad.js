@@ -106,7 +106,7 @@ function initTextures(gl, n) {
  * 图片加载完成回调函数
  */
 function loadTexture(gl, n, texture, u_Sampler, image) {
-    // 对纹理进行y轴反转
+    // 对纹理进行y轴反转 ,WEBGL中的uv坐标或者叫st坐标和图片的y轴是是反着的.
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
     // 开启0号纹理单元
     gl.activeTexture(gl.TEXTURE0);
@@ -116,7 +116,7 @@ function loadTexture(gl, n, texture, u_Sampler, image) {
 
     // 配置纹理参数
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    // 配置纹理图像
+    // 配置纹理图像,将图片分配给纹理对象
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
 
     // 将号单元的纹理传给着色器的uniform
