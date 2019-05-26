@@ -108,7 +108,7 @@ function initTextures(gl, n) {
     image.onload = function () {
         loadTexture(gl, n, texture, u_Sampler, image);
     }
-    image.src = "./resource/sky.jpg";
+    image.src = "../resources/sky.jpg";
     return true;
 }
 /**
