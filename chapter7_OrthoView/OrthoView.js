@@ -55,11 +55,20 @@ window.onload = _ => {
 let near = 0.0, far = 0.5;
 function draw(gl, n, u_ProjMatrix, projMatrix) {
     // 参数 近裁面的左右边界,远裁面的左右边界,近裁面和远裁面的位置
-    projMatrix.setOrtho(-1, 1, -1, 1, near, far);
+    // projMatrix.setOrtho(-1, 1, -1, 1, near, far);
+
+
+    /**
+     * 实验:canvas的宽高比和正交可视空间的宽高不一致就会出现压缩显示的问题
+     */
+    // 都改变为原来的一半,比例不变,没啥问题
+    // projMatrix.setOrtho(-0.5, 0.5, -0.5, 0.5, near, far);
+    // 这个比例变了,就会变化
+    // projMatrix.setOrtho(-0.3, 0.3, -1.0, 1.0, near, far);
 
     //将视图矩阵传递给u_ViewMatrix变量
     gl.uniformMatrix4fv(u_ProjMatrix, false, projMatrix.elements);
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COlOR_BUFFER_BIT);
     document.querySelector('#nearFar').innerHTML =
