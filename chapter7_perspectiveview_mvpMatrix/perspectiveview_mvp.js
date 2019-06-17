@@ -3,8 +3,8 @@ window.onload = _ => {
         attribute vec4 a_Position;
         attribute vec4 a_Color;
         uniform mat4 u_MvpMatrix;//合并模型矩阵,视图矩阵,投影矩阵为mvp矩阵
-       
         varying vec4 v_Color;
+        
         void main(){
             gl_Position = u_MvpMatrix * a_Position;
             v_Color = a_Color;
