@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/tuxianchao/webgl_tutorial#readme",
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.2"
   }
 }
